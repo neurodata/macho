@@ -1,12 +1,12 @@
 .. meta::
-   :description: Official documentation for macho:  Machine Learning for the Open Connectome Project
+   :description: Official documentation for macho:  Machine Annotation for the Open Connectome Project
    :keywords: annotation, tracing, neuroscience, object detection
 .. title::
    macho
 
 .. raw:: html
 
-	<h1>macho:  Machine Learning for the Open Connectome Project</h1>
+	<h1>macho:  Machine Annotation for the Open Connectome Project</h1>
 	<br>
 
 
