@@ -80,3 +80,12 @@ http://braingraph1dev.cs.jhu.edu/ocp/overlay/0.7/temp2/xy/1/5472,5972/8712,9212/
 Note that the server and token pair listed here are public and other data may be pre-existing.  
 
 .. figure:: ../images/manno_example_result.png
+
+
+Advanced Topics/Future Functionality
+------------------------------------
+
+- When uploading annotations processed as many small cubes, often some sort of padding or stitching operation is required.  These will differ slightly depending on use cases.  Examples exist (e.g., i2g, vesicle) to use as a starting point
+
+- ilastik also supports object detection classifiers and manual labeling.  Our wrappers should work unchanged.  The only changes expected are with the users' ilastik application.  Please let us know if you would like us to develop these protocols.
+
