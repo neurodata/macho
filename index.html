@@ -5,12 +5,12 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <meta content="Official documentation for ocp-ilastik:  Manual Annotation Protocol for the Open Connectome Project" name="description" />
+  <meta content="Official documentation for macho:  Machine Learning for the Open Connectome Project" name="description" />
 <meta content="annotation, tracing, neuroscience, object detection" name="keywords" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ocp-ilastik &mdash; macho v1.0 documentation</title>
+  <title>macho &mdash; macho v1.0 documentation</title>
   
 
   
@@ -88,23 +88,17 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="sphinx/faq.html">Frequently Asked Questions (FAQ)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorials/basic_usage.html">Basic Usage</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tutorials/basic_usage.html#train-protocol">Train Protocol</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorials/basic_usage.html#deploy-protocol">Deploy Protocol</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorials/basic_usage.html#usage-notes">Usage Notes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorials/basic_usage.html#example">Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorials/basic_usage.html#validation">Validation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorials/basic_usage.html#advanced-topics-future-functionality">Advanced Topics/Future Functionality</a></li>
 </ul>
-</li>
+<p class="caption"><span class="caption-text">Tools</span></p>
+<ul class="simple">
 </ul>
 <p class="caption"><span class="caption-text">Further Reading</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="api/functions.html">manno Functions</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://gitter.im/openconnectome/ocp-ilastik">Gitter chatroom</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://gitter.im/openconnectome/macho">Gitter chatroom</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://groups.google.com/forum/#!forum/ocp-support/">Mailing List</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://github.com/openconnectome/ocp-ilastik">Github repo</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://github.com/openconnectome/ocp-ilastik/releases/">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/openconnectome/macho">Github repo</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/openconnectome/macho/releases/">Release Notes</a></li>
 </ul>
 
           
@@ -129,7 +123,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="#">Docs</a> &raquo;</li>
       
-    <li>ocp-ilastik</li>
+    <li>macho</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -142,19 +136,19 @@
 </div>
           <div role="main" class="document">
             
-  <h1>ocp-ilastik:  Ilastik-driven Machine Learning for the Open Connectome Project</h1>
-<br><p>ocp-ilastik provides a protocol for creating Open Connectome Project compatible manual annotations, leveraging <a class="reference external" href="http://www.itksnap.org/">ITK Snap</a>.  This tool allows users to quickly create and upload annotations to the Open Connectome Project for science, machine learning, and other applications.  This protocol uses the NIFTI format as a method to exchange data; other tools such as MRIStudio may also be able to use this protocol (but have not been extensively tested).</p>
+  <h1>macho:  Machine Learning for the Open Connectome Project</h1>
+<br><p>macho provides interfaces for a collection of popular machine learning and computer vision tools used in neuroscience.  This includes ilastik, gala, and rhoana in its initial release.</p>
 <div class="figure align-center">
-<a class="reference internal image-reference" href="images/ocp-ilastik_itk_example.jpg"><img alt="images/ocp-ilastik_itk_example.jpg" src="images/ocp-ilastik_itk_example.jpg" style="width: 300px;" /></a>
+<a class="reference internal image-reference" href="images/macho_example.jpg"><img alt="images/macho_example.jpg" src="images/macho_example.jpg" style="width: 800px;" /></a>
 </div>
 <div>
   <img style="width:30px;height:30px;vertical-align:middle">
   <span style=""></span>
-  <IMG SRC="_static/GitHub.png" height="50" width="50"> <a href="https://github.com/openconnectome/ocp-ilastik/zipball/master"> [ZIP]   </a>
-  <a image="_static/GitHub.png" href="https://github.com/openconnectome/ocp-ilastik/tarball/master">[TAR.GZ] </a></p>
+  <IMG SRC="_static/GitHub.png" height="50" width="50"> <a href="https://github.com/openconnectome/macho/zipball/master"> [ZIP]   </a>
+  <a image="_static/GitHub.png" href="https://github.com/openconnectome/macho/tarball/master">[TAR.GZ] </a></p>
 </div><div class="sidebar">
-<p class="first sidebar-title">ocp-ilastik Contact Us</p>
-<p class="last">If you have questions about ocp-ilastik, or have data to analyze, let us know:  <a class="reference external" href="mailto:ocp-support&#37;&#52;&#48;googlegroups&#46;com">ocp-support<span>&#64;</span>googlegroups<span>&#46;</span>com</a></p>
+<p class="first sidebar-title">macho Contact Us</p>
+<p class="last">If you have questions about macho, or have data to analyze, let us know:  <a class="reference external" href="mailto:ocp-support&#37;&#52;&#48;googlegroups&#46;com">ocp-support<span>&#64;</span>googlegroups<span>&#46;</span>com</a></p>
 </div>
 <div class="toctree-wrapper compound" id="documentation">
 <p class="caption"><span class="caption-text">Documentation</span><a class="headerlink" href="#documentation" title="Permalink to this toctree">¶</a></p>
@@ -163,17 +157,21 @@
 <li class="toctree-l1"><a class="reference internal" href="sphinx/local_config.html">Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sphinx/ocp.html">OCP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sphinx/faq.html">Frequently Asked Questions (FAQ)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorials/basic_usage.html">Basic Usage</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound" id="tools">
+<p class="caption"><span class="caption-text">Tools</span><a class="headerlink" href="#tools" title="Permalink to this toctree">¶</a></p>
+<ul class="simple">
 </ul>
 </div>
 <div class="toctree-wrapper compound" id="further-reading">
 <p class="caption"><span class="caption-text">Further Reading</span><a class="headerlink" href="#further-reading" title="Permalink to this toctree">¶</a></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="api/functions.html">manno Functions</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://gitter.im/openconnectome/ocp-ilastik">Gitter chatroom</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://gitter.im/openconnectome/macho">Gitter chatroom</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://groups.google.com/forum/#!forum/ocp-support/">Mailing List</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://github.com/openconnectome/ocp-ilastik">Github repo</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://github.com/openconnectome/ocp-ilastik/releases/">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/openconnectome/macho">Github repo</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/openconnectome/macho/releases/">Release Notes</a></li>
 </ul>
 </div>
 
