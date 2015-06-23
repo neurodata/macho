@@ -53,6 +53,7 @@ macho provides interfaces for a collection of popular machine learning and compu
    :caption: Further Reading
 
    api/functions
+   api/modules
    Gitter chatroom <https://gitter.im/openconnectome/macho>
    Mailing List <https://groups.google.com/forum/#!forum/ocp-support/> 
    Github repo <https://github.com/openconnectome/macho>
