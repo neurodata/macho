@@ -1,0 +1,112 @@
+# Use this to launch Theano convolutional neural network runs for
+# the ISBI 2013 dataset, for membrane classification
+#
+# It is possible to use command-line flags to place runs on
+# different GPUs.  See the examples below for the syntax.  You may
+# want to use "nvidia-smi" first to see which GPUs are free.
+#
+# You may want to re-direct outputs to somewhere in /tmp or /scratch 
+# since these are typically mounted locally on the compute nodes.
+#
+# Note: "python -u" will prevent python from buffering stdout.
+#
+#
+# Examples:
+#   1.  Launch a training run (be on a compute node for this)
+#   nohup make -f Makefile.isbi2012 n3-train GPU=3 > /tmp/isbi2012-n3-train.txt &
+#   nohup make -f Makefile.isbi2012 n3-train GPU=3 > /tmp/isbi2012-n3-train.txt &
+#   
+#   make -f Makefile.kasthuri n3-eval-Kasthuri GPU=0 > N3-evalKasthuri.txt
+#   make -f Makefile.kasthuri n3-eval-First10Kasthuri GPU=1 > N3-evalKastFirst10.txt 
+#   make -f Makefile.kasthuri n3-eval-First3Kasthuri GPU=2 > N3-evalKastFirst3_uniformpixelgen.txt 
+#   make -f Makefile.kasthuri n3-eval-First3Kasthuri GPU=2 > N3-evalKastFirst3_fixedlbXubX.txt
+#
+#   make -f Makefile.kasthuri n3-eval-KastPrelim GPU=3 > N3-evalKFirst10ForCoeffs.txt
+# 
+#   2.  Make a tar file 
+#   make -f Makefile.kasthuri tar
+#
+#
+# May 2014, mjp
+# June 6, 2014, acs
+
+
+include Make.inc
+
+#-------------------------------------------------------------------------------
+# Directories where data is located.  You may need to change these
+# locations for your particular system.
+#-------------------------------------------------------------------------------
+Kasthuri_DIR = ../../Data/Kasthuri
+KastModels_DIR = ../../Models/Kasthuri
+
+#-------------------------------------------------------------------------------
+# Targets for ISBI 2013
+#-------------------------------------------------------------------------------
+dry-run-Kast :
+	$(GPUFLAGS) python em_train.py \
+		-X $(Kasthuri_DIR)/ac4cc_em_1100_1200_ISBI2013train.tif \
+		-Y $(Kasthuri_DIR)/train-membranes-idsia-detnsThr0p25.tif \
+		--train-slices "[1,2,3]" --valid-slices "[4]" \
+		-e 2 -r .002 -d .98 \
+		-m 10000
+
+n3-train-Kast :
+	$(GPUFLAGS) python -u em_train.py \
+		-X $(Kasthuri_DIR)/ac4cc_em_1100_1200_ISBI2013train.tif \
+		-Y $(Kasthuri_DIR)/ac4cc_em_1100_1200_ISBI2013truthlabels10_detnthr0p25.tif \
+		--train-slices "range(0,10)" --valid-slices "range(8,10)" \
+		-e 30 -r .002 -d .98 --redirect-stdout 1
+
+		-p ../params_epoch29.npz \
+		--intensity-lower-bound 0 --intensity-upper-bound 255 \
+		--cubic-coeffs "[]" \
+
+#You first evaluate this to get evaluation results to train the coeffs with.
+n3-eval-KastPrelim :
+	$(GPUFLAGS) python em_evaluate.py -n LeNetMembraneN3 \
+		-X $(Kasthuri_DIR)/ac4cc_em_1100_1200_ISBI2013train_first10.tif \
+		-p $(KastModels_DIR)/ciresan10_params_epoch29.npz  \
+		--intensity-lower-bound 0 --intensity-upper-bound 255 \
+		--cubic-coeffs "[]" \
+		-o kasthuri_evaltrainIDSIAfst10_output
+
+n3-traincoeffs-Kast : 
+	python compute_polyfcnrescaling.py kasthuri_evaltrainIDSIAfst10_output/test-results.npz \
+	       ../../Data/Kasthuri/train-membranes-idsia-detnsThr0p25_first10norm.tif     
+
+#Now that you have the coefficients computed you can use them to evaluate the data set
+n3-eval-Kasthuri :
+	$(GPUFLAGS) python em_evaluate.py -n LeNetMembraneN3 \
+		-X $(Kasthuri_DIR)/ac4cc_em_1100_1200_ISBI2013train.tif \
+		-p $(KastModels_DIR)/ciresan10_params_epoch29.npz \
+		--intensity-lower-bound 0 --intensity-upper-bound 255 \
+		--cubic-coeffs "[8.36495467709, -13.4234046429, 5.32800199723]" \
+		-o kasthuri_evaltestIDSIA_output
+
+n3-eval-First10Kasthuri :
+	$(GPUFLAGS) python em_evaluate.py -n LeNetMembraneN3 \
+		-X $(Kasthuri_DIR)/ac4cc_em_1100_1200_ISBI2013train_first10.tif \
+		-p $(KastModels_DIR)/ciresan10_params_epoch29.npz \
+		--intensity-lower-bound 0 --intensity-upper-bound 255 \
+		--cubic-coeffs "[8.36495467709, -13.4234046429, 5.32800199723]" \
+		-o kasthuri_evaltestIDSIA_first10_output
+
+n3-eval-First3Kasthuri :
+	$(GPUFLAGS) python em_evaluate.py -n LeNetMembraneN3 \
+		-X $(Kasthuri_DIR)/ac4cc_em_1100_1200_ISBI2013train_1to3.tif \
+		-p $(KastModels_DIR)/ciresan10_params_epoch29.npz \
+		--intensity-lower-bound 0 --intensity-upper-bound 255 \
+		-o kasthuri_evaltestFst3_fixedlbXubX
+
+#kasthuri_evaltestIDSIA_first3_output
+
+
+#-------------------------------------------------------------------------------
+# misc targets (not specific to ISBI2012)
+#-------------------------------------------------------------------------------
+# for creating tarballs
+tar :
+	\rm -f ../emcode.tar.gz
+	cd .. && tar cvf emcode.tar ./membrane_segmentation/*py && tar rvf emcode.tar ./membrane_segmentation/Make*
+	cd .. && gzip emcode.tar

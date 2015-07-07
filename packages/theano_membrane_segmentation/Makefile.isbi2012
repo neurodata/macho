@@ -1,0 +1,80 @@
+# Use this to launch Theano convolutional neural network runs for
+# the ISBI 2012 membrane classification problems.
+#
+# It is possible to use command-line flags to place runs on
+# different GPUs.  See the examples below for the syntax.  You may
+# want to use "nvidia-smi" first to see which GPUs are free.
+#
+# You may want to re-direct outputs to somewhere in /tmp or /scratch 
+# since these are typically mounted locally on the compute nodes.
+#
+# Note: "python -u" will prevent python from buffering stdout.
+#
+#
+# Examples:
+#   1.  Launch a training run (be on a compute node for this)
+#   nohup make -f Makefile.isbi2012 n3-train GPU=3 > /tmp/isbi2012-n3-train.txt &
+#
+#   2.  Make a tar file (not ISBI2012 specific)
+#   make -f Makefile.isbi2012 tar
+#
+#
+# May 2014, mjp
+
+
+include Make.inc
+
+#-------------------------------------------------------------------------------
+# Directories where data is located.  You may need to change these
+# locations for your particular system.
+#-------------------------------------------------------------------------------
+ISBI2012_DIR = ../../Data/EM_2012
+
+
+#-------------------------------------------------------------------------------
+# Targets for ISBI 2012
+#-------------------------------------------------------------------------------
+dry-run :
+	$(GPUFLAGS) python em_train.py \
+		-X $(ISBI2012_DIR)/train-volume.tif \
+		-Y $(ISBI2012_DIR)/train-labels.tif \
+		--train-slices "[1,2,3]" --valid-slices "[4]" \
+		-e 2 -r .002 -d .98 \
+		-m 10000
+
+n3-train :
+	$(GPUFLAGS) python -u em_train.py \
+		-X $(ISBI2012_DIR)/train-volume.tif \
+		-Y $(ISBI2012_DIR)/train-labels.tif \
+		--train-slices "range(0,30)" --valid-slices "range(26,30)" \
+		-e 30 -r .002 -d .98 --redirect-stdout 1
+
+n3-eval :
+	$(GPUFLAGS) python em_evaluate.py -n LeNetMembraneN3 \
+		-X $(ISBI2012_DIR)/train-volume.tif \
+		-p ../params_epoch29.npz \
+		--intensity-lower-bound 0 --intensity-upper-bound 255 \
+		--cubic-coeffs "[]" \
+		-o isbi2012_output
+
+
+n3-eval-thresh-test :
+	$(GPUFLAGS) python em_evaluate.py -n LeNetMembraneN3 \
+		-X $(ISBI2012_DIR)/train-volume.tif \
+		-p ../../Models/EM_2012/LeNetMembraneN3/params_epoch29.npz \
+		--intensity-lower-bound 100  --intensity-upper-bound 200 \
+		--thresh-dilation-kernel=2 \
+		--thresh-erosion-kernel=0 \
+		--eval-slices "range(0,1)" \
+		--cubic-coeffs "[]" \
+		-o isbi2012_output
+
+
+#-------------------------------------------------------------------------------
+# misc targets (not specific to ISBI2012)
+#-------------------------------------------------------------------------------
+# for creating tarballs
+tar :
+	\rm -f ../emcode.tar.gz
+	cd .. && tar cvf emcode.tar ./membrane_segmentation/*py && tar rvf emcode.tar ./membrane_segmentation/Make*
+	cd .. && gzip emcode.tar
