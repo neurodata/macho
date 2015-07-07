@@ -79,7 +79,12 @@
               <p class="caption"><span class="caption-text">Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="local_config.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="local_config.html">Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="local_config.html#general-dependencies">General dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="local_config.html#ilastik">ilastik</a></li>
+<li class="toctree-l2"><a class="reference internal" href="local_config.html#gala">gala</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="ocp.html">OCP</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="ocp.html#contributing">Contributing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ocp.html#style-guides">Style Guides</a></li>
@@ -89,11 +94,39 @@
 <li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions (FAQ)</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Tools</span></p>
-<ul class="simple">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/ilastik.html">ilastik</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/ilastik.html#train">Train</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/ilastik.html#evaluate">Evaluate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/ilastik.html#deploy">Deploy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/ilastik.html#validate">Validate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/ilastik.html#notes">Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/ilastik.html#advanced-topics-future-functionality">Advanced Topics/Future Functionality</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/gala.html">gala</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/gala.html#train">Train</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/gala.html#evaluate">Evaluate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/gala.html#deploy">Deploy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/gala.html#validate">Validate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/gala.html#notes">Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/gala.html#advanced-topics-future-functionality">Advanced Topics/Future Functionality</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/rhoana.html">rhoana</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/rhoana.html#train">Train</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/rhoana.html#evaluate">Evaluate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/rhoana.html#deploy">Deploy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/rhoana.html#validate">Validate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/rhoana.html#notes">Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/rhoana.html#advanced-topics-future-functionality">Advanced Topics/Future Functionality</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption"><span class="caption-text">Further Reading</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../api/functions.html">manno Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/functions.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/modules.html">Modules</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://gitter.im/openconnectome/macho">Gitter chatroom</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://groups.google.com/forum/#!forum/ocp-support/">Mailing List</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/openconnectome/macho">Github repo</a></li>
@@ -137,10 +170,15 @@
             
   <div class="section" id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
-<p>ocp-ilastik is a lightweight protocol leveraging the OCP Spatial database and the ilastik toolbox.  This provides an easy method for users to quickly prototype, build, and deploy machine learning solutions to neuroscience problems.  The figure below outlines a sample workflow.</p>
-<div class="figure align-center">
-<img alt="../_images/ocpilastik_intro.png" src="../_images/ocpilastik_intro.png" />
-</div>
+<p>A number of tools exist for generating machine annotations (labels) for neuroscience data.  These tools have varying, specific input and output requirements, which makes it difficult to build interoperable pipelines and workflows.</p>
+<p>macho provides a series of interfaces to get image data from the OCP spatial database, run a machine annotation tool, and convert the resulting annotations in a CAJAL compatible format that can be easily written back to an OCP project.</p>
+<p>As workflows and additional functionalities are developed, we will continue to add to this repository.  As functionality matures, code will be spun off to separate projects (e.g., vesicle synapse detection).</p>
+<p>Currently, we provide wrappers for the following tools/capabilities:</p>
+<ul class="simple">
+<li>ilastik (Pixel Classification)</li>
+<li>gala (agglomerative segmentation)</li>
+<li>rhoana (multi-hypothesis fusion/segmentation)</li>
+</ul>
 </div>
 
 

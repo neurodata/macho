@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ilastik &mdash; macho v1.0 documentation</title>
+  <title>membrane &mdash; macho v1.0 documentation</title>
   
 
   
@@ -33,8 +33,8 @@
 
   
     <link rel="top" title="macho v1.0 documentation" href="../index.html"/>
-        <link rel="next" title="gala" href="gala.html"/>
-        <link rel="prev" title="Frequently Asked Questions (FAQ)" href="../sphinx/faq.html"/> 
+        <link rel="next" title="Axoplasmic Reticula" href="axreticula.html"/>
+        <link rel="prev" title="rhoana" href="rhoana.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -96,10 +96,10 @@
 </ul>
 <p class="caption"><span class="caption-text">Tools</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="">ilastik</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#train">Train</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#deploy">Deploy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#advanced-topics-future-functionality">Advanced Topics/Future Functionality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ilastik.html">ilastik</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ilastik.html#train">Train</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ilastik.html#deploy">Deploy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ilastik.html#advanced-topics-future-functionality">Advanced Topics/Future Functionality</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="gala.html">gala</a><ul>
@@ -120,23 +120,23 @@
 <li class="toctree-l2"><a class="reference internal" href="rhoana.html#advanced-topics-future-functionality">Advanced Topics/Future Functionality</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="membrane.html">membrane</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="membrane.html#caffe">CAFFE</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="membrane.html#train">Train</a></li>
-<li class="toctree-l3"><a class="reference internal" href="membrane.html#evaluate">Evaluate</a></li>
-<li class="toctree-l3"><a class="reference internal" href="membrane.html#deploy">Deploy</a></li>
-<li class="toctree-l3"><a class="reference internal" href="membrane.html#validate">Validate</a></li>
-<li class="toctree-l3"><a class="reference internal" href="membrane.html#notes">Notes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="membrane.html#advanced-topics-future-functionality">Advanced Topics/Future Functionality</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">membrane</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#caffe">CAFFE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#train">Train</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#evaluate">Evaluate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#deploy">Deploy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#validate">Validate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#notes">Notes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#advanced-topics-future-functionality">Advanced Topics/Future Functionality</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="membrane.html#theano">THEANO</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="membrane.html#id1">Train</a></li>
-<li class="toctree-l3"><a class="reference internal" href="membrane.html#id2">Evaluate</a></li>
-<li class="toctree-l3"><a class="reference internal" href="membrane.html#id3">Deploy</a></li>
-<li class="toctree-l3"><a class="reference internal" href="membrane.html#id4">Validate</a></li>
-<li class="toctree-l3"><a class="reference internal" href="membrane.html#id5">Notes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="membrane.html#id6">Advanced Topics/Future Functionality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#theano">THEANO</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Train</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Evaluate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Deploy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Validate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Notes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Advanced Topics/Future Functionality</a></li>
 </ul>
 </li>
 </ul>
@@ -192,11 +192,11 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../index.html">Docs</a> &raquo;</li>
       
-    <li>ilastik</li>
+    <li>membrane</li>
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../_sources/tutorials/ilastik.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/tutorials/membrane.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -205,42 +205,49 @@
 </div>
           <div role="main" class="document">
             
-  <div class="section" id="ilastik">
-<h1>ilastik<a class="headerlink" href="#ilastik" title="Permalink to this headline">¶</a></h1>
-<p>ilastik is a tool developed to do machine annotation and is widely used by the connectomics community.  Here, we developed a lightweight protocol and data exchange format to allow users to use ilastik and OCP together.  This provides an easy method for users to quickly prototype, build, and deploy machine learning solutions to neuroscience problems.  The figure below outlines a sample workflow.  The initial version of this workflow only supports pixel classification.</p>
-<div class="figure align-center">
-<img alt="../_images/ocpilastik_intro.png" src="../_images/ocpilastik_intro.png" />
-</div>
+  <div class="section" id="membrane">
+<h1>membrane<a class="headerlink" href="#membrane" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="caffe">
+<h2>CAFFE<a class="headerlink" href="#caffe" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="train">
-<h2>Train<a class="headerlink" href="#train" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>Identify a region of interest in OCP, and note the data server, token, resolution, and coordinates</li>
-<li>Create a query, using the instructions for CAJAL</li>
-<li>Run <em>ilastik_getImage.m</em> to generate an image volume suitable for annotation in ilastik</li>
-<li>Using ilastik, build a pixel classifier, following the <a class="reference external" href="http://ilastik.org/documentation/pixelclassification/pixelclassification.html">Pixel Classification instructions in Ilastik</a></li>
-<li>Save your ilastik project, containing your trained classifier</li>
-</ul>
+<h3>Train<a class="headerlink" href="#train" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="evaluate">
+<h3>Evaluate<a class="headerlink" href="#evaluate" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="deploy">
-<h2>Deploy<a class="headerlink" href="#deploy" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>Identify a region of interest in OCP, and note the data server, token, resolution, and coordinates</li>
-<li>Create a query, using the instructions for CAJAL</li>
-<li>Run <em>ilastik_getImage.m</em> to generate an image volume suitable for annotation in ilastik.  This can be batched using our LONI framework tools</li>
-<li>Classify the volume of interest using <a href="#id1"><span class="problematic" id="id2">`</span></a>ilastik in headless mode &lt;<a class="reference external" href="http://ilastik.org/documentation/pixelclassification/headless.html">http://ilastik.org/documentation/pixelclassification/headless.html</a>&gt;</li>
-</ul>
-<p><strong>Choose from one of the following options to post-process and upload your data</strong></p>
-<ul class="simple">
-<li>Upload raw probabilities:  <em>put_anno_probs.m</em>, specifying the server, token, annotation file, and query used to download the underlying image. This uploads a probability map of your annotations to the server</li>
-<li>Convert into objects and upload as a volume.  (We recommend thresholding, grouping objects by connected components, and size filtering, but this is outside the scope of a basic tutorial.)  If objects are created, they can be uploaded using:  ocp_upload_dense.m (see CAJAL documentation).</li>
-</ul>
+<h3>Deploy<a class="headerlink" href="#deploy" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="validate">
+<h3>Validate<a class="headerlink" href="#validate" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="notes">
+<h3>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="advanced-topics-future-functionality">
-<h2>Advanced Topics/Future Functionality<a class="headerlink" href="#advanced-topics-future-functionality" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>When uploading annotations processed as many small cubes, often some sort of padding or stitching operation is required.  These will differ slightly depending on use cases.  Examples exist (e.g., i2g, vesicle) to use as a starting point</li>
-<li>ilastik also supports object detection classifiers and manual labeling.  Our wrappers should work unchanged.  The only changes expected are with the users&#8217; ilastik application.  Please let us know if you would like us to develop these protocols.</li>
-</ul>
+<h3>Advanced Topics/Future Functionality<a class="headerlink" href="#advanced-topics-future-functionality" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="theano">
+<h2>THEANO<a class="headerlink" href="#theano" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>Train<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id2">
+<h3>Evaluate<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id3">
+<h3>Deploy<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id4">
+<h3>Validate<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id5">
+<h3>Notes<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id6">
+<h3>Advanced Topics/Future Functionality<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+</div>
 </div>
 </div>
 
@@ -250,10 +257,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="gala.html" class="btn btn-neutral float-right" title="gala" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="axreticula.html" class="btn btn-neutral float-right" title="Axoplasmic Reticula" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../sphinx/faq.html" class="btn btn-neutral" title="Frequently Asked Questions (FAQ)" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="rhoana.html" class="btn btn-neutral" title="rhoana" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

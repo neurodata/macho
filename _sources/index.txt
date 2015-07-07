@@ -47,7 +47,10 @@ macho provides interfaces for a collection of popular machine learning and compu
    tutorials/ilastik
    tutorials/gala
    tutorials/rhoana
-
+   tutorials/membrane
+   tutorials/axreticula
+   tutorials/blockmerge
+   
 .. toctree::
    :maxdepth: 1
    :caption: Further Reading
