@@ -14,14 +14,7 @@ function ilastik_runIlastik(ilastikProjectPath, outputPath, stackPattern)
 % Usage Example:
 %   ilastik_runIlastik('~/ilastik-Linux/', './tmp/results/{nickname}_results.tiff', "stack_name_base*.png")
 
-
-% TODO: We need to know the path to Ilastik...
-%       Presumably this will be set in stone on the server?
-ILASTIK_PATH = '~/Downloads';
-
-system(strcat(ILASTIK_PATH, 'ilastik-1.1.5 --headless --project=', ...
-project, ' --output_format=tiff ', ' --output_filename_format=', outputPath, ' "', ...
-  stackPattern,  '"' ));
+system(strcat('runIlastik.py', ilastikProjectPath, outputPath, stackPattern));
 % Nest in double-quotes to prevent shell auto-expansion
       
 % TODO: Check for failure in Ilastik's exit-code here,
