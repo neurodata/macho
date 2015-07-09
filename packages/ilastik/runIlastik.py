@@ -20,8 +20,10 @@
 ILASTIK_PATH = "/usr/bin/ilastik"
 
 import sys, os
+from subprocess import Popen, PIPE
+
 # read in command line args
-params = list(argv)[1:]
+params = list(sys.argv)[1:]
 
 project        = params[0]
 outfile_format = params[1]
@@ -35,7 +37,7 @@ args = ['--headless', '--project', project,
 cmd = ' '.join([ILASTIK_PATH] + args)
 
 # Call Ilastik.
-process = Popen(cmd, stdout=PIPE, stderr=PIPE)
+process = Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE)
 output = process.communicate()
 proc_error = output[1]
 proc_output = output[0]

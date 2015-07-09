@@ -14,7 +14,7 @@ function ilastik_runIlastik(ilastikProjectPath, outputPath, stackPattern)
 % Usage Example:
 %   ilastik_runIlastik('~/ilastik-Linux/', './tmp/results/{nickname}_results.tiff', "stack_name_base*.png")
 
-system(strcat('runIlastik.py', ilastikProjectPath, outputPath, stackPattern));
+system(['python ./ilastik/runIlastik.py ' ilastikProjectPath ' ' outputPath ' ' stackPattern]);
 % Nest in double-quotes to prevent shell auto-expansion
       
 % TODO: Check for failure in Ilastik's exit-code here,
