@@ -1,5 +1,5 @@
 function run_ilastik_example()
-% Ilastik Examphelle (based on WGR's https://github.com/openconnectome/manno/blob/master/code/)
+% Ilastik Example (based on WGR's https://github.com/openconnectome/manno/blob/master/code/)
 % ilastik(headless) starter to demonstrate protocol functionality.  All required inputs
 % are hardcoded for this demo.  Paths are hardcoded for Linux/Mac.
 
@@ -24,10 +24,11 @@ serverUp = 'braingraph1dev.cs.jhu.edu';
 tokenUp = 'temp2';
 
 %% Pull the image to annotate
-ilastik_getImage(server, token, 'queryFileTest', 'testilk.tiff', 0)
+ilastik_get_data(server, token, 'queryFileTest', 'tmp', 0)
+RAMONtoTIFF('tmp', 'testilk.tiff')
 
 % Run the annotations via a headless Ilastik instance
 ilastik_runIlastik('./example_classifier.ilp', './results', '*.tiff')
 
 % Push the annotations back
-%ilastik_putAnno(serverUp, tokenUp, '~/data/queryFileTest', '~/data/exampleAnno.nii.gz',' RAMONOrganelle', 1, 0)
+% ilastik_put_anno(serverUp, tokenUp, '~/data/queryFileTest', '~/data/exampleAnno.nii.gz',' RAMONOrganelle', 1, 0)
