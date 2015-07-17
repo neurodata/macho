@@ -2,9 +2,7 @@ function ilastik_runIlastik(ilastikProjectPath, outputPath, stackPattern)
 % J. Matelsky - jordan.matelsky@jhu.edu
 
 % ilastikProjectPath    The path to the Ilastik project that contains the
-%                       classifiers you wish to use. (There isn't a prettier
-%                       way of handling this, unfortunately. Classifiers are
-%                       saved in the project file and nowhere else.)
+%                       classifiers you wish to use.
 % outputPath            The path to which to save the output (should LONI
 %                       be in play here?)
 % stackPattern          The *-matched pattern of files which should be run
@@ -16,7 +14,7 @@ function ilastik_runIlastik(ilastikProjectPath, outputPath, stackPattern)
 
 system(['python ./ilastik/runIlastik.py ' ilastikProjectPath ' ' outputPath ' ' stackPattern]);
 % Nest in double-quotes to prevent shell auto-expansion
-      
+
 % TODO: Check for failure in Ilastik's exit-code here,
 %       and notify the user accordingly.
 %       We'll need to store this output to be sure that

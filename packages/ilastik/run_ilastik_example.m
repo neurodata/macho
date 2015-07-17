@@ -31,4 +31,4 @@ RAMONtoTIFF('tmp', 'testilk.tiff')
 ilastik_runIlastik('./example_classifier.ilp', './results', '*.tiff')
 
 % Push the annotations back
-% ilastik_put_anno(serverUp, tokenUp, '~/data/queryFileTest', '~/data/exampleAnno.nii.gz',' RAMONOrganelle', 1, 0)
+ilastik_put_anno(serverUp, tokenUp, './results/', '~/data/exampleAnno.nii.gz',' RAMONOrganelle', 1, 0)

@@ -1,7 +1,7 @@
 ilastik
 ***********
 
-ilastik is a tool developed to do machine annotation and is widely used by the connectomics community.  Here, we developed a lightweight protocol and data exchange format to allow users to use ilastik and OCP together.  This provides an easy method for users to quickly prototype, build, and deploy machine learning solutions to neuroscience problems.  The figure below outlines a sample workflow.  The initial version of this workflow only supports pixel classification.  
+ilastik is a tool developed to do machine annotation and is widely used by the connectomics community.  Here, we developed a lightweight protocol and data exchange format to allow users to use ilastik and OCP together.  This provides an easy method for users to quickly prototype, build, and deploy machine learning solutions to neuroscience problems.  The figure below outlines a sample workflow.  The initial version of this workflow only supports pixel classification.
 
 .. figure:: ../images/ocpilastik_intro.png
     :align: center
@@ -21,13 +21,64 @@ Deploy
 - Identify a region of interest in OCP, and note the data server, token, resolution, and coordinates
 - Create a query, using the instructions for CAJAL
 - Run *ilastik_getImage.m* to generate an image volume suitable for annotation in ilastik.  This can be batched using our LONI framework tools
-- Classify the volume of interest using `ilastik in headless mode <http://ilastik.org/documentation/pixelclassification/headless.html>
+- Classify the volume of interest using `Ilastik in headless mode <http://ilastik.org/documentation/pixelclassification/headless.html>`_.
 
 **Choose from one of the following options to post-process and upload your data**
 
 - Upload raw probabilities:  *put_anno_probs.m*, specifying the server, token, annotation file, and query used to download the underlying image. This uploads a probability map of your annotations to the server
 
 - Convert into objects and upload as a volume.  (We recommend thresholding, grouping objects by connected components, and size filtering, but this is outside the scope of a basic tutorial.)  If objects are created, they can be uploaded using:  ocp_upload_dense.m (see CAJAL documentation).
+
+Example
+-------
+
+- *"I want to add annotations to my dataset."*
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+    1. **Pick a region of interest in OCP.** We'll use the ``bock11`` dataset, and query a RAMON Volume as described in the `CAJAL documentation <http://w.ocp.me/faq:download>`_. ::
+
+        oo = OCP();
+        oo.setServerLocation('http://openconnecto.me/');
+        oo.setImageToken('bock11');
+        oo.setDefaultResolution(1);
+
+        q = OCPQuery(eOCPQueryType.imageDense);
+
+        xstart = 16000;  xstop = 17000;
+        ystart = 15000;  ystop = 16000;
+        zstart = 3900;   zstop = 3910;
+        resolution = 1;
+
+        q.setCutoutArgs([xstart xstop],...
+                        [ystart ystop],...
+                        [zstart zstop],...
+                        1);
+
+      At this point, you can verify that you have a valid query with the following line::
+
+        [pf, msg] = q.validate()
+
+    2. With our query successfully built, we'll download the data and store it in ``im``::
+
+        im = oo.query(q);
+
+      You can confirm that you have successfully downloaded the data with the visualizer, ``image(im);``.
+
+    3. This site has a demo pixel classifier file that has been (poorly) trained for synapses in this dataset. It can be downloaded `here </_static/example_bock11_classifier_2.ilp>`_. We'll use it to derive annotations for the entire dataset using **macho**.
+
+    4. Run `ilastik_runIlastik.m`. This function takes three arguments: ``ilastikProjectPath``, ``outputPath``, and ``stackPattern``. They are documented inline. For our purposes, we can run::
+
+        ilastik_runIlastik('./example_bock11_classifier_2.ilp', './tmp/results/{nickname}_results.tiff', "stack_name_base*.png")
+
+    5. If all went well, you should be left with a directory called ``/tmp`` inside of which is a tiff-stack output of annotations.
+
+    6. Last, we'll upload these annotations back to OCP, using the ``ilastik_put_anno`` function.
+
+- Example File
+^^^^^^^^^^^^^^
+
+    Check out the file ``run_ilastik_example.m`` for a complete standalone example.
+
 
 Advanced Topics/Future Functionality
 ------------------------------------
