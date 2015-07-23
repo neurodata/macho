@@ -25,10 +25,10 @@ tokenUp = 'temp2';
 
 %% Pull the image to annotate
 ilastik_get_data(server, token, 'queryFileTest', 'tmp', 0)
-RAMONtoTIFF('tmp', 'testilk.tiff')
+RAMONtoTIFF('tmp', 'kas11cc.tiff')
 
 % Run the annotations via a headless Ilastik instance
-ilastik_runIlastik('./example_classifier.ilp', './results', '*.tiff')
+ilastik_runIlastik('./example_classifier.ilp', 'kas11cc.tiff', './results')
 
 % Push the annotations back
 ilastik_put_anno(serverUp, tokenUp, './results/', '~/data/exampleAnno.nii.gz',' RAMONOrganelle', 1, 0)
