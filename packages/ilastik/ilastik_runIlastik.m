@@ -5,8 +5,7 @@ function ilastik_runIlastik(ilastikProjectPath, stackPattern, outputPath)
 %                       classifiers you wish to use.
 % stackPattern          The *-matched pattern of files which should be run
 %                       through the classifier. e.g. stack*.png
-% outputPath            The path to which to save the output (should LONI
-%                       be in play here?)
+% outputPath            The path to which to save the output
 
 
 % Usage Example:

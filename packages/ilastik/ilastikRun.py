@@ -17,7 +17,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-ILASTIK_PATH = "/usr/bin/ilastik"
+ILASTIK_PATH = "Applications/ilastik-1.1.5.app/bin/ilastik"
 
 import sys, os
 from subprocess import Popen, PIPE
