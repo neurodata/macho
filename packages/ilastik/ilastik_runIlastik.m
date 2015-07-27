@@ -1,4 +1,4 @@
-function ilastik_runIlastik(ilastikProjectPath, stackPattern, outputPath)
+function ilastikReturn = ilastik_runIlastik(ilastikProjectPath, stackPattern, outputPath)
 % J. Matelsky - jordan.matelsky@jhu.edu
 
 % ilastikProjectPath    The path to the Ilastik project that contains the
@@ -11,11 +11,8 @@ function ilastik_runIlastik(ilastikProjectPath, stackPattern, outputPath)
 % Usage Example:
 %   ilastik_runIlastik('~/ilastik-Linux/', './tmp/results/{nickname}_results.tiff', "stack_name_base*.png")
 
-system(['python ./ilastik/ilastikRun.py ' ilastikProjectPath ' ' outputPath ' ' stackPattern]);
-% Nest in double-quotes to prevent shell auto-expansion
 
-% TODO: Check for failure in Ilastik's exit-code here,
-%       and notify the user accordingly.
-%       We'll need to store this output to be sure that
-%       we can access the files that have been created
-%       successfully.
+MACHO_PATH = '~/Documents/ocp/macho';
+
+ilastikReturn = system(['python ' MACHO_PATH '/code/packages/ilastik/ilastikRun.py ' ilastikProjectPath ' ' outputPath ' ' stackPattern]);
+% Nest the above in double-quotes to prevent shell auto-expansion
