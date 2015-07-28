@@ -27,7 +27,7 @@ token = 'kasthuri11cc';
 serverUp = 'braingraph1dev.cs.jhu.edu';
 tokenUp = 'temp2';
 
-%% Pull the image to annotate
+% Pull the image to annotate
 ilastik_get_data(server, token, [MACHO_PATH '/code/packages/ilastik/queryFileTest'], 'tmp', 0)
 RAMONtoTIFF('tmp', [MACHO_PATH '/code/packages/ilastik/kas11cc.tiff'])
 

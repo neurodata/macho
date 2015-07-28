@@ -9,10 +9,10 @@ function ilastikReturn = ilastik_runIlastik(ilastikProjectPath, stackPattern, ou
 
 
 % Usage Example:
-%   ilastik_runIlastik('~/ilastik-Linux/', './tmp/results/{nickname}_results.tiff', "stack_name_base*.png")
+%   ilastik_runIlastik('~/ilastik-Linux/', './tmp/results/{nickname}_results.tiff', "stack_name_base*")
 
 
 MACHO_PATH = '~/Documents/ocp/macho';
 
-ilastikReturn = system(['python ' MACHO_PATH '/code/packages/ilastik/ilastikRun.py ' ilastikProjectPath ' ' outputPath ' ' stackPattern]);
+ilastikReturn = system(['python ' MACHO_PATH '/code/packages/ilastik/ilastikRun.py ' ilastikProjectPath ' ' outputPath ' "' stackPattern '"']);
 % Nest the above in double-quotes to prevent shell auto-expansion
