@@ -16,7 +16,7 @@
                 <metadata>
                         <data key="__creationDateKey" value="" />
                 </metadata>
-                <module id="RawtoRAMON_1" name="RawtoRAMON" package="macho" posX="444" posY="385" rotation="1" sourceCode="" location="pipeline://localhost//Users/jordan/projects/ocp/CAJAL/api/matlab/wrapper/basicWrapper.py">
+                <module id="RawtoRAMON_1" name="RawtoRAMON" package="macho" posX="489" posY="441" rotation="1" sourceCode="" location="pipeline://braincloud1.cs.jhu.edu//Users/jordan/projects/ocp/CAJAL/api/matlab/wrapper/basicWrapper.py">
                         <metadata>
                                 <data key="__creationDateKey" value="Tue Jun 30 10:11:25 EDT 2015" />
                         </metadata>
@@ -70,7 +70,7 @@
                                 </values>
                         </input>
                 </module>
-                <module id="IlastikDeploy_1" name="Ilastik Deploy" package="macho" version="1.0" description="This module runs 3 steps.  it cutouts out data, runs Ilastik, and uploads the resulting segments" icon="0" posX="628" posY="51" rotation="1" sourceCode="" location="pipeline://localhost//Users/jordan/projects/ocp/macho/code/packages/ilastik/IlastikRun.py" executableVersion="1.0" gridVariables="-l virtual_free=32G">
+                <module id="IlastikDeploy_1" name="Ilastik Deploy" package="macho" version="1.0" description="This module runs 3 steps.  it cutouts out data, runs Ilastik, and uploads the resulting segments" icon="0" posX="628" posY="51" rotation="1" sourceCode="" location="pipeline://braincloud1.cs.jhu.edu//Users/jordan/projects/ocp/macho/code/packages/ilastik/IlastikRun.py" executableVersion="1.0" gridVariables="-l virtual_free=32G">
                         <authors>
                                 <author fullName="William Gray Roncal and Dean Kleissas" email="wgr@jhu.edu" website="www.jhuapl.edu" />
                                 <author fullName="Jordan Matelsky" email="jordan.matelsky@jhu.edu" website="" />
@@ -110,11 +110,11 @@
                                         </fileTypes>
                                 </format>
                                 <values>
-                                        <value>pipeline://localhost//Users/jordan/projects/ocp/macho/code/data/example_bock11_classifier_2.ilp</value>
+                                        <value>pipeline://braincloud1.cs.jhu.edu//Users/jordan/projects/ocp/macho/code/data/example_bock11_classifier_2.ilp</value>
                                 </values>
                         </input>
                 </module>
-                <module id="CubeUploadDense_1" name="Cube Upload Dense" package="CAJAL" version="1.2" description="This module ingests an OCPQuery object and based on the parameters, retrieves data from the Open Connectome Project servers and saves a file for pipeline use.&#xA;&#xA;This module can save the retrieved cube as either a RAMONVolume stored in a .mat file or an HDF5 .h5 file by setting the objectType flag.  If omitted a RAMONVolume is created by default.&#xA;&#xA;NOTE:  The output file type set in LONI pipeline should match the objectType flag.&#xA;0 = .mat&#xA;1 = .h5" icon="1" posX="679" posY="388" rotation="1" sourceCode="" location="pipeline://localhost//Users/jordan/projects/ocp/CAJAL/api/matlab/wrapper/basicWrapper.py" executableVersion="1.0">
+                <module id="CubeUploadDense_1" name="Cube Upload Dense" package="CAJAL" version="1.2" description="This module ingests an OCPQuery object and based on the parameters, retrieves data from the Open Connectome Project servers and saves a file for pipeline use.&#xA;&#xA;This module can save the retrieved cube as either a RAMONVolume stored in a .mat file or an HDF5 .h5 file by setting the objectType flag.  If omitted a RAMONVolume is created by default.&#xA;&#xA;NOTE:  The output file type set in LONI pipeline should match the objectType flag.&#xA;0 = .mat&#xA;1 = .h5" icon="1" posX="696" posY="430" rotation="1" sourceCode="" location="pipeline://braincloud1.cs.jhu.edu//Users/jordan/projects/ocp/CAJAL/api/matlab/wrapper/basicWrapper.py" executableVersion="1.0">
                         <authors>
                                 <author fullName="Dean Kleissas" email="dean.kleissas@jhuapl.edu" website="www.jhuapl.edu" />
                         </authors>
@@ -177,7 +177,7 @@
                                 <author fullName="Dean Kleissas" email="dean.kleissas@jhuapl.edu" website="www.jhuapl.edu" />
                         </executableAuthors>
                 </module>
-                <module id="CubeCutoutImage_1" name="Cube Cutout Image" package="CAJAL" version="1.2" description="This module ingests an OCPQuery object and based on the parameters, retrieves data from the Open Connectome Project servers and saves a file for pipeline use.&#xA;&#xA;This module can save the retrieved cube as either a RAMONVolume stored in a .mat file or an HDF5 .h5 file by setting the objectType flag.  If omitted a RAMONVolume is created by default.&#xA;&#xA;NOTE:  The output file type set in LONI pipeline should match the objectType flag.&#xA;0 = .mat&#xA;1 = .h5" icon="1" posX="299" posY="32" rotation="1" sourceCode="" location="pipeline://localhost//Users/jordan/projects/ocp/CAJAL/api/matlab/wrapper/basicWrapper.py" executableVersion="1.0">
+                <module id="CubeCutoutImage_1" name="Cube Cutout Image" package="CAJAL" version="1.2" description="This module ingests an OCPQuery object and based on the parameters, retrieves data from the Open Connectome Project servers and saves a file for pipeline use.&#xA;&#xA;This module can save the retrieved cube as either a RAMONVolume stored in a .mat file or an HDF5 .h5 file by setting the objectType flag.  If omitted a RAMONVolume is created by default.&#xA;&#xA;NOTE:  The output file type set in LONI pipeline should match the objectType flag.&#xA;0 = .mat&#xA;1 = .h5" icon="1" posX="299" posY="32" rotation="1" sourceCode="" location="pipeline://braincloud1.cs.jhu.edu//Users/jordan/projects/ocp/CAJAL/api/matlab/wrapper/basicWrapper.py" executableVersion="1.0">
                         <authors>
                                 <author fullName="Dean Kleissas" email="dean.kleissas@jhuapl.edu" website="www.jhuapl.edu" />
                         </authors>
@@ -259,7 +259,7 @@
                                 <author fullName="Dean Kleissas" email="dean.kleissas@jhuapl.edu" website="www.jhuapl.edu" />
                         </executableAuthors>
                 </module>
-                <module id="CubeCutoutPreprocessAdvanced_1" name="Cube Cutout Preprocess Advanced" package="CAJAL" version="1.2" description="This module creates sub-cubes of data from a larger specified region.  It creates a collection of saved OCPQuery objects and a list file that specifies the location to the saved OCPQuery objects.&#xA;&#xA;You can optionally pad in x,y, and z.  This will generate overlapping cubes, which can be important for some computer vision tasks.&#xA;&#xA;You can optionally align to database X-Y cuboid boundaries for more efficient query/writing.&#xA;&#xA;You can optionally align to Z cuboid boundaries&#xA;&#xA;You can optionally shuffle the list file.  This is useful when running on a cluster and padding so data access has a lower chance of colliding. &#xA;&#xA;Use the Cube Cutout module to retrieve data based on the generated OCPQuery objects&#xA;&#xA;*** Important Note:&#xA;When specifying the cutout region, it is important to remember that the first point is inclusive and the second point is exclusive.&#xA;Example - start: 10 end: 20 = 10 -&gt; 19 (span of 10)&#xA;&#xA;&#xA;" icon="1" posX="32" posY="20" rotation="1" sourceCode="" location="pipeline://localhost//Users/jordan/projects/ocp/CAJAL/api/matlab/wrapper/basicWrapper.py" executableVersion="1.2" envVariables="MATLAB_EXE_LOCATION=/Applications/MATLAB_R2015a.app/bin/matlab;CAJAL3D_LOCATION=/Users/jordan/projects/ocp/CAJAL/cajal3d.m">
+                <module id="CubeCutoutPreprocessAdvanced_1" name="Cube Cutout Preprocess Advanced" package="CAJAL" version="1.2" description="This module creates sub-cubes of data from a larger specified region.  It creates a collection of saved OCPQuery objects and a list file that specifies the location to the saved OCPQuery objects.&#xA;&#xA;You can optionally pad in x,y, and z.  This will generate overlapping cubes, which can be important for some computer vision tasks.&#xA;&#xA;You can optionally align to database X-Y cuboid boundaries for more efficient query/writing.&#xA;&#xA;You can optionally align to Z cuboid boundaries&#xA;&#xA;You can optionally shuffle the list file.  This is useful when running on a cluster and padding so data access has a lower chance of colliding. &#xA;&#xA;Use the Cube Cutout module to retrieve data based on the generated OCPQuery objects&#xA;&#xA;*** Important Note:&#xA;When specifying the cutout region, it is important to remember that the first point is inclusive and the second point is exclusive.&#xA;Example - start: 10 end: 20 = 10 -&gt; 19 (span of 10)&#xA;&#xA;&#xA;" icon="1" posX="32" posY="20" rotation="1" sourceCode="" location="pipeline://braincloud1.cs.jhu.edu//Users/jordan/projects/ocp/CAJAL/api/matlab/wrapper/basicWrapper.py" executableVersion="1.2" envVariables="MATLAB_EXE_LOCATION=/Applications/MATLAB_R2015a.app/bin/matlab;CAJAL3D_LOCATION=/Users/jordan/projects/ocp/CAJAL/cajal3d.m">
                         <authors>
                                 <author fullName="Dean Kleissas" email="dean.kleissas@jhuapl.edu" website="www.jhuapl.edu" />
                         </authors>
@@ -489,8 +489,7 @@
                                 <author fullName="Dean Kleissas" email="dean.kleissas@jhuapl.edu" website="www.jhuapl.edu" />
                         </executableAuthors>
                 </module>
-                <module id="RAMONtoTIFF_1" name="RAMONtoTIFF" package="macho" posX="440" posY="52" rotation="1" sourceCode="" location="pipeline://localhost//Users/jordan/projects/ocp/CAJAL/api/matlab/wrapper/basicWrapper.py">
-                        <tag />
+                <module id="RAMONtoTIFF_1" name="RAMONtoTIFF" package="macho" posX="440" posY="52" rotation="1" sourceCode="" location="pipeline://braincloud1.cs.jhu.edu//Users/jordan/projects/ocp/CAJAL/api/matlab/wrapper/basicWrapper.py">
                         <metadata>
                                 <data key="__creationDateKey" value="Tue Jun 30 10:11:25 EDT 2015" />
                         </metadata>
@@ -515,15 +514,15 @@
                                         </fileTypes>
                                 </format>
                                 <values>
-                                        <value>pipeline://localhost//Users/jordan/Documents/ocp/macho/code/packages/ilastik/RAMONtoTIFF.m</value>
+                                        <value>pipeline://braincloud1.cs.jhu.edu//Users/jordan/Documents/ocp/macho/code/packages/ilastik/RAMONtoTIFF.m</value>
                                 </values>
                         </input>
                 </module>
                 <variables>
                         <variable name="emToken">kasthuri11cc</variable>
                         <variable name="anno_token">testwill1</variable>
-                        <variable name="memServer">dsp061.pha.jhu.edu</variable>
                         <variable name="yStop">9736</variable>
+                        <variable name="memServer">dsp061.pha.jhu.edu</variable>
                         <variable name="sToken">sDeploy5</variable>
                         <variable name="yStart">8712</variable>
                         <variable name="xStop">6496</variable>
@@ -531,8 +530,8 @@
                         <variable name="anno_server">braingraph1dev.cs.jhu.edu</variable>
                         <variable name="xSpan">1024</variable>
                         <variable name="xStart">5472</variable>
-                        <variable name="truth_cutout">truth_cutout.mat</variable>
                         <variable name="padY1">50</variable>
+                        <variable name="truth_cutout">truth_cutout.mat</variable>
                         <variable name="synapse_cutout">synapse_cutout.mat</variable>
                         <variable name="padY3">300</variable>
                         <variable name="edge_truth_server">openconnecto.me</variable>
@@ -545,8 +544,8 @@
                         <variable name="padX">0</variable>
                         <variable name="padZ">0</variable>
                         <variable name="img_token">kasthuri11cc</variable>
-                        <variable name="padY">0</variable>
                         <variable name="emLocation">braingraph1dev.cs.jhu.edu</variable>
+                        <variable name="padY">0</variable>
                         <variable name="membrane_token">kasthuri11_final_membranes</variable>
                         <variable name="zStop">1100</variable>
                         <variable name="memToken">ac3_membranes</variable>
