@@ -1,5 +1,9 @@
 function ilastik_put_anno(server, token, queryFile, fileIn, protoRAMON, useSemaphore)
 
+
+nii = load_nii(fileIn);
+anno = nii.img;
+
 load(queryFile)
 
 ANNO = RAMONVolume;
