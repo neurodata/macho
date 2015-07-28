@@ -1,31 +1,18 @@
-function ilastik_runIlastik(ilastikProjectPath, outputPath, stackPattern)
+function ilastikReturn = ilastik_runIlastik(ilastikProjectPath, stackPattern, outputPath)
 % J. Matelsky - jordan.matelsky@jhu.edu
 
 % ilastikProjectPath    The path to the Ilastik project that contains the
-%                       classifiers you wish to use. (There isn't a prettier
-%                       way of handling this, unfortunately. Classifiers are
-%                       saved in the project file and nowhere else.)
-% outputPath            The path to which to save the output (should LONI
-%                       be in play here?)
+%                       classifiers you wish to use.
 % stackPattern          The *-matched pattern of files which should be run
 %                       through the classifier. e.g. stack*.png
+% outputPath            The path to which to save the output
 
 
 % Usage Example:
-%   ilastik_runIlastik('~/ilastik-Linux/', './tmp/results/{nickname}_results.tiff', "stack_name_base*.png")
+%   ilastik_runIlastik('~/ilastik-Linux/', './tmp/results/{nickname}_results.tiff', "stack_name_base*")
 
 
-% TODO: We need to know the path to Ilastik...
-%       Presumably this will be set in stone on the server?
-ILASTIK_PATH = '~/Downloads';
+MACHO_PATH = '~/Documents/ocp/macho';
 
-system(strcat(ILASTIK_PATH, 'ilastik-1.1.5 --headless --project=', ...
-project, ' --output_format=tiff ', ' --output_filename_format=', outputPath, ' "', ...
-  stackPattern,  '"' ));
-% Nest in double-quotes to prevent shell auto-expansion
-      
-% TODO: Check for failure in Ilastik's exit-code here,
-%       and notify the user accordingly.
-%       We'll need to store this output to be sure that
-%       we can access the files that have been created
-%       successfully.
+ilastikReturn = system(['python ' MACHO_PATH '/code/packages/ilastik/ilastikRun.py ' ilastikProjectPath ' ' outputPath ' "' stackPattern '"']);
+% Nest the above in double-quotes to prevent shell auto-expansion
