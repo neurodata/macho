@@ -18,3 +18,9 @@ oo.setDefaultResolution(query.resolution);
 cube = oo.query(query);
 save(fileOut, 'cube');
 end
+
+put_data(type, format, ...):
+    if (type != ramon):
+        data = convert_(type)_to_ramon(data)
+    
+    upload(data)
