@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pipeline version=".2">
+        <moduleGroup id="Untitled_1" name="Untitled" posX="0" posY="0" sourceCode="">
+                <module id="Ilastikobject_1" name="Ilastik object" package="macho" posX="539" posY="255" rotation="1" sourceCode="" location="pipeline://braincloud1.cs.jhu.edu//share0/lib/ilastik-master-Linux/run_ilastik.sh" envVariables="LAZYFLOW_TOTAL_RAM_MB=8000;LAZYFLOW_THREADS=4">
+                        <authors>
+                                <author fullName="Will Gray Roncal" email="wgr@jhu.edu" website="" />
+                        </authors>
+                        <tag />
+                        <metadata>
+                                <data key="__creationDateKey" value="Tue Jul 28 10:33:24 EDT 2015" />
+                        </metadata>
+                        <input id="Ilastikobject_1.headless" name="headless" required="true" enabled="true" order="0" prefix="--headless" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="String" cardinality="0" />
+                        </input>
+                        <input id="Ilastikobject_1.project_name" name="project_name" required="true" enabled="true" order="1" prefix="--project" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="File" extension="" description="Any type of data file" />
+                                        </fileTypes>
+                                </format>
+                                <values>
+                                        <value>pipeline://braincloud1.cs.jhu.edu//share0/macho/data/ilastik_mito_objclassification.ilp</value>
+                                </values>
+                        </input>
+                        <output id="Ilastikobject_1.output_filename_format" name="output_filename_format" required="true" enabled="true" order="4" prefix="--output_filename_format" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="hdf5 file" extension="h5" description="" />
+                                        </fileTypes>
+                                </format>
+                        </output>
+                        <input id="Ilastikobject_1.output_format" name="output_format" required="true" enabled="true" order="3" prefix="--output_format" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="String" cardinality="1" />
+                                <values>
+                                        <value>hdf5</value>
+                                </values>
+                        </input>
+                        <input id="Ilastikobject_1.rawdata" name="raw data" required="true" enabled="true" order="5" includeTransformedParameter="true">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="hdf5 file" extension="h5" description="" />
+                                        </fileTypes>
+                                        <transform order="0" operation="Append">/CUTOUT</transform>
+                                </format>
+                        </input>
+                        <input id="Ilastikobject_1.exportdata" name="exportdata" required="false" enabled="true" order="2" prefix="--export_object_prediction_img" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="String" cardinality="0" />
+                        </input>
+                        <input id="Ilastikobject_1.probdata" name="prob data" required="true" enabled="true" order="6" includeTransformedParameter="true">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="hdf5 file" extension="h5" description="" />
+                                        </fileTypes>
+                                        <transform order="1" operation="Append">/exported_data</transform>
+                                </format>
+                        </input>
+                </module>
+                <variables>
+                        <variable name="emToken">kasthuri11cc</variable>
+                        <variable name="uploadTokenObj">test_ilastik_obj1</variable>
+                        <variable name="xStart">7000</variable>
+                        <variable name="uploadTokenProb">test_ilastik_prob1</variable>
+                        <variable name="yStop">9500</variable>
+                        <variable name="padY1">0</variable>
+                        <variable name="sToken">sDeploy5</variable>
+                        <variable name="yStart">8500</variable>
+                        <variable name="xStop">8000</variable>
+                        <variable name="zSpan">25</variable>
+                        <variable name="Var 3">Value</variable>
+                        <variable name="zStart">1000</variable>
+                        <variable name="vToken">vDeploy5</variable>
+                        <variable name="ySpan">1000</variable>
+                        <variable name="padX">0</variable>
+                        <variable name="xSpan">1000</variable>
+                        <variable name="img_token">kasthuri11cc</variable>
+                        <variable name="padZ">0</variable>
+                        <variable name="emLocation">openconnecto.me</variable>
+                        <variable name="padY">0</variable>
+                        <variable name="zStop">1025</variable>
+                </variables>
+        </moduleGroup>
+</pipeline>
+

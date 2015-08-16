@@ -13,7 +13,9 @@ classification performance.  If you would like to contribute a better performing
 Ilastik already supports exchanging data in hdf5 format.  The wrappers and functions provided here are used to help
 read in raw OCP data and format the classifier output into RAMON objects suitable for uploading to OCP project databases.
 
-LONI modules and a workflow exist to enable rapid development.
+**We currently have a bug when running ilastik in headless mode.  We expect to resolve this before 8/31/2015.**
+
+LONI modules and an example workflow exist to enable rapid development.
 
 .. figure:: ../images/ocpilastik_intro.png
     :align: center
@@ -50,8 +52,7 @@ Object Detection Train
 - Identify a region of interest in OCP, and note the data server, token, resolution, and coordinates
 - Create a query, using the instructions for OCP RESTful queries, CAJAL, or OCPy (CAJAL: cubeCutoutPreprocessAdvanced.m).
 - Download a raw data volume in HDF5 format (CAJAL: cubeCutout.m).
-- Using ilastik, your raw data, and the results from a previous pixel classification step,
-build an object classifier, following the `Object Classification Workflow <http://ilastik.org/documentation/objects/objects.html>`_
+- Using ilastik, your raw data, and the results from a previous pixel classification step, build an object classifier, following the `Object Classification Workflow <http://ilastik.org/documentation/objects/objects.html>`_
 
 Object Detection Deploy
 -----------------------
@@ -76,8 +77,8 @@ Ilastik Command:
 Example
 -------
 
-- *"I want to add annotations to my dataset."*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+*"I want to add annotations to my dataset."*
+
 This example walks obtaining data from OCP, building classifiers in ilastik and deploying these classifiers in the OCP framework.
 The definitive documentation is at ilastik.org.  Here we seek to build a lightweight classifier to detect mitochondria in our images.
 
@@ -109,13 +110,10 @@ Link to first slice
 4.  Add new data > separate image > <training volume>
 5.  Still in the input data tab, right click on dataset description, edit properties -> change storage to save with classifier; change axes to -> zyx
 6.  In the feature selection tab, choose some features appropriate to your task (we choose color, edge, and texture with a sigma of 1 for this example)
-7.  In the training tab, add two labels, mitochondria and background.  We assume that your target class is the first label, throughout this example
-*Live prediction can help guide you, but requires quite a bit of memory, especially for large datasets.*
+7.  In the training tab, add two labels, mitochondria and background.  We assume that your target class is the first label, throughout this example *Live prediction can help guide you, but requires quite a bit of memory, especially for large datasets.*
 8.  Save project and exit.
-
 9.  Run the Ilastik classifier, following the example above
-10. Convert output data to an OCP compatible format (probability channel needs to be chosen, xy axes need to be switched, and data should be converted to a RAMONVolume)
-ilastik object detection requires the raw ilastik output
+10. Convert output data to an OCP compatible format (probability channel needs to be chosen, xy axes need to be switched, and data should be converted to a RAMONVolume) ilastik object detection requires the raw ilastik output
 11.  Upload result to OCP, using (using CAJAL: cubeUploadProbabilities.m)
 
 **For object detection in ilastik (depends on pixel classification)**
@@ -123,8 +121,7 @@ ilastik object detection requires the raw ilastik output
 1.  Open Ilastik
 2.  Create New Project > Object Classification with Inputs of Raw Data + Pixel Prediction Map
 3.  Load data
-4.  In the threshold and size filter tab, we chose only one threshold, with sigma values defaulted to 1.
-Threshold = 0.7, and size filter = 1000-1000000
+4.  In the threshold and size filter tab, we chose only one threshold, with sigma values defaulted to 1. Threshold = 0.7, and size filter = 1000-1000000
 5.  In the features tab, select all features
 6.  Add labels of mitochondria and background (target/clutter)
 7.  In the object classification tab, label detections as either target or clutter
@@ -134,16 +131,21 @@ Threshold = 0.7, and size filter = 1000-1000000
 11.  Convert output data to an OCP compatible format (xy axes need to be switched and array squeezed.  Making unique objects is handled in the next step)
 12.  Group objects by connected component and upload to OCP using (using CAJAL: cubeUploadDense.m)
 
-Sample classifiers:
+**Sample classifiers:**
 
 ./data/ilastik_mito_pixelclassification.ilp
 ./data/ilastik_mito_objclassification.ilp
 
 Sample results:
 
+http://openconnecto.me/ocp/overlay/0.4/test_ilastik_prob1/xy/1/7000,8000/8500,9500/1010/
+
+.. figure:: ../images/ilastik_pixel_class_example.png
+    :align: center
+
 
 Advanced Topics/Future Functionality
 ------------------------------------
 
 - When uploading annotations processed as many small cubes, often some sort of padding or stitching operation is required.  These will differ slightly depending on use cases.  Examples exist (e.g., i2g, vesicle) to use as a starting point
-- When running in a cluster environment, we suggest limiting threads to 1 and RAM to the value specified in LONI to allow ilastik lazy operations to co-exist smoothly with SGE.
+- When running in an SGE cluster environment, we suggest limiting threads to 1 and RAM to the value specified in LONI to allow ilastik lazy operations to co-exist smoothly with SGE.  To do this, specify the following environment variables:  LAZYFLOW_THREADS=1 LAZYFLOW_TOTAL_RAM_MB=8000 run_ilastik.sh --headless ...
