@@ -13,7 +13,7 @@ classification performance.  If you would like to contribute a better performing
 Ilastik already supports exchanging data in hdf5 format.  The wrappers and functions provided here are used to help
 read in raw OCP data and format the classifier output into RAMON objects suitable for uploading to OCP project databases.
 
-**We currently have a bug when running ilastik in headless mode.  We expect to resolve this before 8/31/2015.**
+**We currently have a bug when running ilastik object detection in headless mode.  We expect to resolve this before 8/31/2015.**
 
 LONI modules and an example workflow exist to enable rapid development.
 
@@ -39,6 +39,8 @@ Pixel Classification Deploy
 - Reformat (using ilastikPixelToRAMON.m) and upload results (using CAJAL: cubeUploadProbabilities.m)
 
 Ilastik Command:
+
+.. code::
 
   <ilastik executable> --headless
   --project <project file>.ilp
@@ -66,6 +68,8 @@ Object Detection Deploy
 
 Ilastik Command:
 
+.. code::
+
   <ilastik executable> --headless
   --project=<projectfile>.ilp
   --export_object_prediction_img
@@ -88,21 +92,39 @@ The definitive documentation is at ilastik.org.  Here we seek to build a lightwe
 the following URLs into a web browser.  All volumes should be renamed with an '.h5' extension.
 
 **Pixel Classification Training Volume**
+
+.. code::
+
   http://braingraph1dev.cs.jhu.edu/ocp/ca/kasthuri11cc/hdf5/1/3000,4000/5000,6000/1000,1016/
 
 Link to first slice
+
+.. code::
+
   http://braingraph1dev.cs.jhu.edu/ocp/ca/kasthuri11cc/xy/1/3000,4000/5000,6000/1000/
 
 **Pixel Classification Test Volume / Object Detection Training Volume**
+
+.. code::
+
   http://braingraph1dev.cs.jhu.edu/ocp/ca/kasthuri11cc/hdf5/1/3000,4000/5000,6000/1017,1032/
 
 Link to first slice
+
+.. code::
+
   http://braingraph1dev.cs.jhu.edu/ocp/ca/kasthuri11cc/xy/1/3000,4000/5000,6000/1017/
 
 **Object Detection Test Volume**
-http://braingraph1dev.cs.jhu.edu/ocp/ca/kasthuri11cc/hdf5/1/3000,4000/5000,6000/1033,1048/
+
+.. code::
+
+  http://braingraph1dev.cs.jhu.edu/ocp/ca/kasthuri11cc/hdf5/1/3000,4000/5000,6000/1033,1048/
 
 Link to first slice
+
+.. code::
+
   http://braingraph1dev.cs.jhu.edu/ocp/ca/kasthuri11cc/xy/1/3000,4000/5000,6000/1048/
 
 2.  Open Ilastik
@@ -133,12 +155,16 @@ Link to first slice
 
 **Sample classifiers:**
 
-./data/ilastik_mito_pixelclassification.ilp
-./data/ilastik_mito_objclassification.ilp
+.. code::
+
+   ./data/ilastik_mito_pixelclassification.ilp
+   ./data/ilastik_mito_objclassification.ilp
 
 Sample results:
 
-http://openconnecto.me/ocp/overlay/0.4/test_ilastik_prob1/xy/1/7000,8000/8500,9500/1010/
+.. code::
+
+   http://openconnecto.me/ocp/overlay/0.4/test_ilastik_prob1/xy/1/7000,8000/8500,9500/1010/
 
 .. figure:: ../images/ilastik_pixel_class_example.png
     :align: center
