@@ -95,37 +95,37 @@ the following URLs into a web browser.  All volumes should be renamed with an '.
 
 .. code::
 
-  http://braingraph1dev.cs.jhu.edu/ocp/ca/kasthuri11cc/hdf5/1/3000,4000/5000,6000/1000,1016/
+  http://openconnecto.me/ocp/ca/kasthuri11cc/hdf5/1/3000,4000/5000,6000/1000,1016/
 
 Link to first slice
 
 .. code::
 
-  http://braingraph1dev.cs.jhu.edu/ocp/ca/kasthuri11cc/xy/1/3000,4000/5000,6000/1000/
+  http://openconnecto.me/ocp/ca/kasthuri11cc/xy/1/3000,4000/5000,6000/1000/
 
 **Pixel Classification Test Volume / Object Detection Training Volume**
 
 .. code::
 
-  http://braingraph1dev.cs.jhu.edu/ocp/ca/kasthuri11cc/hdf5/1/3000,4000/5000,6000/1017,1032/
+  http://openconnecto.me/ocp/ca/kasthuri11cc/hdf5/1/3000,4000/5000,6000/1017,1032/
 
 Link to first slice
 
 .. code::
 
-  http://braingraph1dev.cs.jhu.edu/ocp/ca/kasthuri11cc/xy/1/3000,4000/5000,6000/1017/
+  http://openconnecto.me/ocp/ca/kasthuri11cc/xy/1/3000,4000/5000,6000/1017/
 
 **Object Detection Test Volume**
 
 .. code::
 
-  http://braingraph1dev.cs.jhu.edu/ocp/ca/kasthuri11cc/hdf5/1/3000,4000/5000,6000/1033,1048/
+  http://openconnecto.me/ocp/ca/kasthuri11cc/hdf5/1/3000,4000/5000,6000/1033,1048/
 
 Link to first slice
 
 .. code::
 
-  http://braingraph1dev.cs.jhu.edu/ocp/ca/kasthuri11cc/xy/1/3000,4000/5000,6000/1048/
+  http://openconnecto.me/ocp/ca/kasthuri11cc/xy/1/3000,4000/5000,6000/1048/
 
 2.  Open Ilastik
 3.  Create New Project  > Pixel Classification
@@ -164,7 +164,7 @@ Sample results:
 
 .. code::
 
-   http://openconnecto.me/ocp/overlay/0.4/test_ilastik_prob1/xy/1/7000,8000/8500,9500/1010/
+   http:///ocp/overlay/0.4/test_ilastik_prob1/xy/1/7000,8000/8500,9500/1010/
 
 .. figure:: ../images/ilastik_pixel_class_example.png
     :align: center
@@ -175,3 +175,9 @@ Advanced Topics/Future Functionality
 
 - When uploading annotations processed as many small cubes, often some sort of padding or stitching operation is required.  These will differ slightly depending on use cases.  Examples exist (e.g., i2g, vesicle) to use as a starting point
 - When running in an SGE cluster environment, we suggest limiting threads to 1 and RAM to the value specified in LONI to allow ilastik lazy operations to co-exist smoothly with SGE.  To do this, specify the following environment variables:  LAZYFLOW_THREADS=1 LAZYFLOW_TOTAL_RAM_MB=8000 run_ilastik.sh --headless ...
+
+../Applications/ilastik-1.1.5.app/Contents/MacOS/ilastik --headless --project /Users/graywr1/ilastik_mito_pixelclassification.ilp --output_format hdf5 /Users/graywr1/Downloads/test_ilastik1.h5/CUTOUT
+/Applications/ilastik-1.1.5.app/Contents/MacOS/ilastik --headless --project=/Users/graywr1/ilastik_mito_objclassification.ilp --export_object_prediction_img --raw_data "/Users/graywr1/Downloads/test_ilastik2.h5/CUTOUT" --prediction_maps "/Users/graywr1/Downloads/test_ilastik2_Probabilities.h5/exported_data"
+
+../Applications/ilastik-1.1.5.app/Contents/MacOS/ilastik --headless --project /Users/graywr1/ilastik_mito_pixelclassification.ilp --output_format hdf5 /Users/graywr1/Downloads/test_ilastik1.h5/CUTOUT
+/Applications/ilastik-1.1.5.app/Contents/MacOS/ilastik --headless --project=/Users/graywr1/ilastik_mito_objclassification.ilp --export_object_prediction_img --raw_data "/Users/graywr1/Downloads/test_ilastik2.h5/CUTOUT" --prediction_maps "/Users/graywr1/Downloads/test_ilastik2_Probabilities.h5/exported_data"
