@@ -291,27 +291,27 @@ The definitive documentation is at ilastik.org.  Here we seek to build a lightwe
 <p>1.  Get datasets for training and test.  These volumes may be obtained via RESTful interface.  One simple option is to copy and paste
 the following URLs into a web browser.  All volumes should be renamed with an &#8216;.h5&#8217; extension.</p>
 <p><strong>Pixel Classification Training Volume</strong></p>
-<div class="code highlight-python"><div class="highlight"><pre>http://braingraph1dev.cs.jhu.edu/ocp/ca/kasthuri11cc/hdf5/1/3000,4000/5000,6000/1000,1016/
+<div class="code highlight-python"><div class="highlight"><pre>http://openconnecto.me/ocp/ca/kasthuri11cc/hdf5/1/3000,4000/5000,6000/1000,1016/
 </pre></div>
 </div>
 <p>Link to first slice</p>
-<div class="code highlight-python"><div class="highlight"><pre>http://braingraph1dev.cs.jhu.edu/ocp/ca/kasthuri11cc/xy/1/3000,4000/5000,6000/1000/
+<div class="code highlight-python"><div class="highlight"><pre>http://openconnecto.me/ocp/ca/kasthuri11cc/xy/1/3000,4000/5000,6000/1000/
 </pre></div>
 </div>
 <p><strong>Pixel Classification Test Volume / Object Detection Training Volume</strong></p>
-<div class="code highlight-python"><div class="highlight"><pre>http://braingraph1dev.cs.jhu.edu/ocp/ca/kasthuri11cc/hdf5/1/3000,4000/5000,6000/1017,1032/
+<div class="code highlight-python"><div class="highlight"><pre>http://openconnecto.me/ocp/ca/kasthuri11cc/hdf5/1/3000,4000/5000,6000/1017,1032/
 </pre></div>
 </div>
 <p>Link to first slice</p>
-<div class="code highlight-python"><div class="highlight"><pre>http://braingraph1dev.cs.jhu.edu/ocp/ca/kasthuri11cc/xy/1/3000,4000/5000,6000/1017/
+<div class="code highlight-python"><div class="highlight"><pre>http://openconnecto.me/ocp/ca/kasthuri11cc/xy/1/3000,4000/5000,6000/1017/
 </pre></div>
 </div>
 <p><strong>Object Detection Test Volume</strong></p>
-<div class="code highlight-python"><div class="highlight"><pre>http://braingraph1dev.cs.jhu.edu/ocp/ca/kasthuri11cc/hdf5/1/3000,4000/5000,6000/1033,1048/
+<div class="code highlight-python"><div class="highlight"><pre>http://openconnecto.me/ocp/ca/kasthuri11cc/hdf5/1/3000,4000/5000,6000/1033,1048/
 </pre></div>
 </div>
 <p>Link to first slice</p>
-<div class="code highlight-python"><div class="highlight"><pre>http://braingraph1dev.cs.jhu.edu/ocp/ca/kasthuri11cc/xy/1/3000,4000/5000,6000/1048/
+<div class="code highlight-python"><div class="highlight"><pre>http://openconnecto.me/ocp/ca/kasthuri11cc/xy/1/3000,4000/5000,6000/1048/
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
@@ -347,7 +347,7 @@ the following URLs into a web browser.  All volumes should be renamed with an &#
 </pre></div>
 </div>
 <p>Sample results:</p>
-<div class="code highlight-python"><div class="highlight"><pre>http://openconnecto.me/ocp/overlay/0.4/test_ilastik_prob1/xy/1/7000,8000/8500,9500/1010/
+<div class="code highlight-python"><div class="highlight"><pre>http:///ocp/overlay/0.4/test_ilastik_prob1/xy/1/7000,8000/8500,9500/1010/
 </pre></div>
 </div>
 <div class="figure align-center">
@@ -360,6 +360,10 @@ the following URLs into a web browser.  All volumes should be renamed with an &#
 <li>When uploading annotations processed as many small cubes, often some sort of padding or stitching operation is required.  These will differ slightly depending on use cases.  Examples exist (e.g., i2g, vesicle) to use as a starting point</li>
 <li>When running in an SGE cluster environment, we suggest limiting threads to 1 and RAM to the value specified in LONI to allow ilastik lazy operations to co-exist smoothly with SGE.  To do this, specify the following environment variables:  LAZYFLOW_THREADS=1 LAZYFLOW_TOTAL_RAM_MB=8000 run_ilastik.sh &#8211;headless ...</li>
 </ul>
+<p>../Applications/ilastik-1.1.5.app/Contents/MacOS/ilastik &#8211;headless &#8211;project /Users/graywr1/ilastik_mito_pixelclassification.ilp &#8211;output_format hdf5 /Users/graywr1/Downloads/test_ilastik1.h5/CUTOUT
+/Applications/ilastik-1.1.5.app/Contents/MacOS/ilastik &#8211;headless &#8211;project=/Users/graywr1/ilastik_mito_objclassification.ilp &#8211;export_object_prediction_img &#8211;raw_data &#8220;/Users/graywr1/Downloads/test_ilastik2.h5/CUTOUT&#8221; &#8211;prediction_maps &#8220;/Users/graywr1/Downloads/test_ilastik2_Probabilities.h5/exported_data&#8221;</p>
+<p>../Applications/ilastik-1.1.5.app/Contents/MacOS/ilastik &#8211;headless &#8211;project /Users/graywr1/ilastik_mito_pixelclassification.ilp &#8211;output_format hdf5 /Users/graywr1/Downloads/test_ilastik1.h5/CUTOUT
+/Applications/ilastik-1.1.5.app/Contents/MacOS/ilastik &#8211;headless &#8211;project=/Users/graywr1/ilastik_mito_objclassification.ilp &#8211;export_object_prediction_img &#8211;raw_data &#8220;/Users/graywr1/Downloads/test_ilastik2.h5/CUTOUT&#8221; &#8211;prediction_maps &#8220;/Users/graywr1/Downloads/test_ilastik2_Probabilities.h5/exported_data&#8221;</p>
 </div>
 </div>
 
