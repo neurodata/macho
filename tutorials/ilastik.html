@@ -219,7 +219,7 @@ The initial version of this workflow supports both pixel classification and an o
 classification performance.  If you would like to contribute a better performing classifier, please contact us.</p>
 <p>Ilastik already supports exchanging data in hdf5 format.  The wrappers and functions provided here are used to help
 read in raw OCP data and format the classifier output into RAMON objects suitable for uploading to OCP project databases.</p>
-<p><strong>We currently have a bug when running ilastik in headless mode.  We expect to resolve this before 8/31/2015.</strong></p>
+<p><strong>We currently have a bug when running ilastik object detection in headless mode.  We expect to resolve this before 8/31/2015.</strong></p>
 <p>LONI modules and an example workflow exist to enable rapid development.</p>
 <div class="figure align-center">
 <img alt="../_images/ocpilastik_intro.png" src="../_images/ocpilastik_intro.png" />
@@ -244,12 +244,13 @@ read in raw OCP data and format the classifier output into RAMON objects suitabl
 <li>Reformat (using ilastikPixelToRAMON.m) and upload results (using CAJAL: cubeUploadProbabilities.m)</li>
 </ul>
 <p>Ilastik Command:</p>
-<blockquote>
-<div>&lt;ilastik executable&gt; &#8211;headless
-&#8211;project &lt;project file&gt;.ilp
-&#8211;output_format hdf5
-&#8211;output_filename_format &lt;output filename&gt;
-&lt;path and filename for raw data&gt;/&lt;hdf5 dataset&gt;</div></blockquote>
+<div class="code highlight-python"><div class="highlight"><pre>&lt;ilastik executable&gt; --headless
+--project &lt;project file&gt;.ilp
+--output_format hdf5
+--output_filename_format &lt;output filename&gt;
+&lt;path and filename for raw data&gt;/&lt;hdf5 dataset&gt;
+</pre></div>
+</div>
 </div>
 <div class="section" id="object-detection-train">
 <h2>Object Detection Train<a class="headerlink" href="#object-detection-train" title="Permalink to this headline">¶</a></h2>
@@ -271,14 +272,15 @@ read in raw OCP data and format the classifier output into RAMON objects suitabl
 <li>Reformat (using ilastikObjectToRAMON.m) and upload results (using CAJAL: cubeUploadDense.m)</li>
 </ul>
 <p>Ilastik Command:</p>
-<blockquote>
-<div>&lt;ilastik executable&gt; &#8211;headless
-&#8211;project=&lt;projectfile&gt;.ilp
-&#8211;export_object_prediction_img
-&#8211;raw_data &lt;path and filename for raw data&gt;/&lt;/hdf5 dataset&gt;
-&#8211;prediction_maps &lt;path and filename for probability maps&gt;.h5/&lt;hdf5 dataset&gt;
-&#8211;output_filename_format &lt;output filename&gt;
-&#8211;output_format hdf5</div></blockquote>
+<div class="code highlight-python"><div class="highlight"><pre>&lt;ilastik executable&gt; --headless
+--project=&lt;projectfile&gt;.ilp
+--export_object_prediction_img
+--raw_data &lt;path and filename for raw data&gt;/&lt;/hdf5 dataset&gt;
+--prediction_maps &lt;path and filename for probability maps&gt;.h5/&lt;hdf5 dataset&gt;
+--output_filename_format &lt;output filename&gt;
+--output_format hdf5
+</pre></div>
+</div>
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
@@ -288,22 +290,30 @@ The definitive documentation is at ilastik.org.  Here we seek to build a lightwe
 <p><strong>For pixel classification in ilastik</strong></p>
 <p>1.  Get datasets for training and test.  These volumes may be obtained via RESTful interface.  One simple option is to copy and paste
 the following URLs into a web browser.  All volumes should be renamed with an &#8216;.h5&#8217; extension.</p>
-<dl class="docutils">
-<dt><strong>Pixel Classification Training Volume</strong></dt>
-<dd><a class="reference external" href="http://braingraph1dev.cs.jhu.edu/ocp/ca/kasthuri11cc/hdf5/1/3000,4000/5000,6000/1000,1016/">http://braingraph1dev.cs.jhu.edu/ocp/ca/kasthuri11cc/hdf5/1/3000,4000/5000,6000/1000,1016/</a></dd>
-<dt>Link to first slice</dt>
-<dd><a class="reference external" href="http://braingraph1dev.cs.jhu.edu/ocp/ca/kasthuri11cc/xy/1/3000,4000/5000,6000/1000/">http://braingraph1dev.cs.jhu.edu/ocp/ca/kasthuri11cc/xy/1/3000,4000/5000,6000/1000/</a></dd>
-<dt><strong>Pixel Classification Test Volume / Object Detection Training Volume</strong></dt>
-<dd><a class="reference external" href="http://braingraph1dev.cs.jhu.edu/ocp/ca/kasthuri11cc/hdf5/1/3000,4000/5000,6000/1017,1032/">http://braingraph1dev.cs.jhu.edu/ocp/ca/kasthuri11cc/hdf5/1/3000,4000/5000,6000/1017,1032/</a></dd>
-<dt>Link to first slice</dt>
-<dd><a class="reference external" href="http://braingraph1dev.cs.jhu.edu/ocp/ca/kasthuri11cc/xy/1/3000,4000/5000,6000/1017/">http://braingraph1dev.cs.jhu.edu/ocp/ca/kasthuri11cc/xy/1/3000,4000/5000,6000/1017/</a></dd>
-</dl>
-<p><strong>Object Detection Test Volume</strong>
-<a class="reference external" href="http://braingraph1dev.cs.jhu.edu/ocp/ca/kasthuri11cc/hdf5/1/3000,4000/5000,6000/1033,1048/">http://braingraph1dev.cs.jhu.edu/ocp/ca/kasthuri11cc/hdf5/1/3000,4000/5000,6000/1033,1048/</a></p>
-<dl class="docutils">
-<dt>Link to first slice</dt>
-<dd><a class="reference external" href="http://braingraph1dev.cs.jhu.edu/ocp/ca/kasthuri11cc/xy/1/3000,4000/5000,6000/1048/">http://braingraph1dev.cs.jhu.edu/ocp/ca/kasthuri11cc/xy/1/3000,4000/5000,6000/1048/</a></dd>
-</dl>
+<p><strong>Pixel Classification Training Volume</strong></p>
+<div class="code highlight-python"><div class="highlight"><pre>http://braingraph1dev.cs.jhu.edu/ocp/ca/kasthuri11cc/hdf5/1/3000,4000/5000,6000/1000,1016/
+</pre></div>
+</div>
+<p>Link to first slice</p>
+<div class="code highlight-python"><div class="highlight"><pre>http://braingraph1dev.cs.jhu.edu/ocp/ca/kasthuri11cc/xy/1/3000,4000/5000,6000/1000/
+</pre></div>
+</div>
+<p><strong>Pixel Classification Test Volume / Object Detection Training Volume</strong></p>
+<div class="code highlight-python"><div class="highlight"><pre>http://braingraph1dev.cs.jhu.edu/ocp/ca/kasthuri11cc/hdf5/1/3000,4000/5000,6000/1017,1032/
+</pre></div>
+</div>
+<p>Link to first slice</p>
+<div class="code highlight-python"><div class="highlight"><pre>http://braingraph1dev.cs.jhu.edu/ocp/ca/kasthuri11cc/xy/1/3000,4000/5000,6000/1017/
+</pre></div>
+</div>
+<p><strong>Object Detection Test Volume</strong></p>
+<div class="code highlight-python"><div class="highlight"><pre>http://braingraph1dev.cs.jhu.edu/ocp/ca/kasthuri11cc/hdf5/1/3000,4000/5000,6000/1033,1048/
+</pre></div>
+</div>
+<p>Link to first slice</p>
+<div class="code highlight-python"><div class="highlight"><pre>http://braingraph1dev.cs.jhu.edu/ocp/ca/kasthuri11cc/xy/1/3000,4000/5000,6000/1048/
+</pre></div>
+</div>
 <ol class="arabic simple" start="2">
 <li>Open Ilastik</li>
 <li>Create New Project  &gt; Pixel Classification</li>
@@ -332,10 +342,14 @@ the following URLs into a web browser.  All volumes should be renamed with an &#
 <li>Group objects by connected component and upload to OCP using (using CAJAL: cubeUploadDense.m)</li>
 </ol>
 <p><strong>Sample classifiers:</strong></p>
-<p>./data/ilastik_mito_pixelclassification.ilp
-./data/ilastik_mito_objclassification.ilp</p>
+<div class="code highlight-python"><div class="highlight"><pre>./data/ilastik_mito_pixelclassification.ilp
+./data/ilastik_mito_objclassification.ilp
+</pre></div>
+</div>
 <p>Sample results:</p>
-<p><a class="reference external" href="http://openconnecto.me/ocp/overlay/0.4/test_ilastik_prob1/xy/1/7000,8000/8500,9500/1010/">http://openconnecto.me/ocp/overlay/0.4/test_ilastik_prob1/xy/1/7000,8000/8500,9500/1010/</a></p>
+<div class="code highlight-python"><div class="highlight"><pre>http://openconnecto.me/ocp/overlay/0.4/test_ilastik_prob1/xy/1/7000,8000/8500,9500/1010/
+</pre></div>
+</div>
 <div class="figure align-center">
 <img alt="../_images/ilastik_pixel_class_example.png" src="../_images/ilastik_pixel_class_example.png" />
 </div>
