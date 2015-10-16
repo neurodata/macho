@@ -4,6 +4,8 @@ function ilastikObjectToRAMON(inFile, RAMONVolOutFile, queryFile, objChannel, pa
 h = h5info(inFile);
 data = h5read(inFile, ['/', h.Datasets.Name]);
 whos data
+size(data)
+unique(data)
 data = squeeze(data(objChannel,:,:,:));
 data = permute(data,[2,1,3]);
 load(queryFile)
