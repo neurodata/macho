@@ -24,7 +24,6 @@
                                 <authors>
                                         <author fullName="Jordan Matelsky" email="jordan.matelsky@jhu.edu" website="" />
                                 </authors>
-                                <tag />
                                 <metadata>
                                         <data key="__creationDateKey" value="Tue Jul 28 10:33:24 EDT 2015" />
                                 </metadata>
@@ -533,7 +532,7 @@
                                         <author fullName="Dean Kleissas" email="dean.kleissas@jhuapl.edu" website="www.jhuapl.edu" />
                                 </executableAuthors>
                         </module>
-                        <module id="ilastikObjectToRAMON_1" name="ilastikObjectToRAMON" package="macho" posX="880" posY="283" sourceCode="" location="pipeline://localhost//share0/cajal/api/matlab/wrapper/basicWrapper.py">
+                        <module id="ilastikObjectToRAMON_1" name="ilastikObjectToRAMON" package="macho" posX="870" posY="320" sourceCode="" location="pipeline://localhost//share0/cajal/api/matlab/wrapper/basicWrapper.py">
                                 <metadata>
                                         <data key="__creationDateKey" value="Tue Jun 30 10:11:25 EDT 2015" />
                                 </metadata>
@@ -593,7 +592,7 @@
                                         </values>
                                 </input>
                         </module>
-                        <module id="Ilastikobject_1" name="Ilastik object" package="macho" posX="688" posY="0" rotation="1" sourceCode="" location="pipeline://localhost//share0/src/ilastik/run_ilastik.sh" envVariables="LAZYFLOW_THREADS=4;LAZYFLOW_TOTAL_RAM_MB=8000">
+                        <module id="Ilastikobject_1" name="Ilastik object" package="macho" posX="688" posY="0" rotation="1" sourceCode="" location="pipeline://localhost//share0/src/ilastik/run_ilastik.sh" envVariables="LAZYFLOW_TOTAL_RAM_MB=8000;LAZYFLOW_THREADS=4">
                                 <authors>
                                         <author fullName="Will Gray Roncal" email="wgr@jhu.edu" website="" />
                                 </authors>
@@ -621,7 +620,7 @@
                                                 </fileTypes>
                                         </format>
                                 </output>
-                                <input id="Ilastikobject_1.output_format" name="output_format" required="false" enabled="false" order="4" prefix="--output_format" prefixSpaced="true" prefixAllArgs="false">
+                                <input id="Ilastikobject_1.output_format" name="output_format" required="false" enabled="true" order="4" prefix="--output_format" prefixSpaced="true" prefixAllArgs="false">
                                         <format type="String" cardinality="1" />
                                         <values>
                                                 <value>hdf5</value>
@@ -717,27 +716,27 @@
                                 </executableAuthors>
                         </module>
                         <variables>
-                                <variable name="yStart" order="0">8712</variable>
-                                <variable name="uploadToken" order="16">test_ilastik</variable>
-                                <variable name="emChannel" order="1">image</variable>
-                                <variable name="xSpan" order="2">1024</variable>
-                                <variable name="xStart" order="3">5472</variable>
-                                <variable name="zSpan" order="4">10</variable>
-                                <variable name="zStart" order="5">1000</variable>
-                                <variable name="padX" order="6">0</variable>
-                                <variable name="uploadChannelProb" order="17">prob1</variable>
-                                <variable name="padZ" order="7">0</variable>
-                                <variable name="uploadServer" order="18">openconnecto.me</variable>
-                                <variable name="padY" order="8">0</variable>
-                                <variable name="zStop" order="9">1010</variable>
                                 <variable name="emToken" order="10">kasthuri11cc</variable>
+                                <variable name="xStart" order="3">5472</variable>
                                 <variable name="yStop" order="11">9736</variable>
+                                <variable name="ySpan2" order="13">500</variable>
+                                <variable name="yStart" order="0">8712</variable>
                                 <variable name="protoRAMON" order="19">RAMONOrganelle</variable>
                                 <variable name="xStop" order="12">6496</variable>
-                                <variable name="uploadChannelObj" order="20">obj1</variable>
-                                <variable name="ySpan2" order="13">500</variable>
+                                <variable name="uploadToken" order="16">test_ilastik</variable>
+                                <variable name="zSpan" order="4">100</variable>
+                                <variable name="zStart" order="5">1000</variable>
                                 <variable name="ySpan" order="14">1024</variable>
+                                <variable name="emChannel" order="1">image</variable>
+                                <variable name="padX" order="6">0</variable>
+                                <variable name="xSpan" order="2">1024</variable>
+                                <variable name="uploadChannelProb" order="17">prob2</variable>
+                                <variable name="padZ" order="7">0</variable>
                                 <variable name="emLocation" order="15">openconnecto.me</variable>
+                                <variable name="uploadServer" order="18">openconnecto.me</variable>
+                                <variable name="padY" order="8">0</variable>
+                                <variable name="zStop" order="9">1100</variable>
+                                <variable name="uploadChannelObj" order="20">obj2</variable>
                         </variables>
                 </moduleGroup>
         </moduleGroup>

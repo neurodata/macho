@@ -1,9 +1,10 @@
-function ilastikObjectToRAMON(inFile, RAMONVolOutFile, queryFile, padX, padY, padZ)
+function ilastikObjectToRAMON(inFile, RAMONVolOutFile, queryFile, objChannel, padX, padY, padZ)
 
 %For now, assumes only one dataset
 h = h5info(inFile);
 data = h5read(inFile, ['/', h.Datasets.Name]);
-data = squeeze(data);
+whos data
+data = squeeze(data(objChannel,:,:,:));
 data = permute(data,[2,1,3]);
 load(queryFile)
 
