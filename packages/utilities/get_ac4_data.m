@@ -8,7 +8,7 @@ end
 
 
 oo = OCP();
-oo.setServerLocation('http://braingraph1dev.cs.jhu.edu/');
+oo.setServerLocation('http://openconnecto.me/');
 oo.setImageToken('kasthuri11cc');
 
 
@@ -34,7 +34,8 @@ disp('done with edata')
 
 %% Synapse Data
 oo.setServerLocation('http://openconnecto.me/');
-oo.setAnnoToken('ac4_synTruth_v3');
+oo.setAnnoToken('ac3ac4');
+oo.setAnnoChannel('ac4_synapse_truth');
 q.setType(eOCPQueryType.annoDense);
 
 try
@@ -43,8 +44,8 @@ catch
     sData = download_big_cuboid(oo,q);
 end
 %% Membranes
-oo.setServerLocation('http://dsp029.pha.jhu.edu/');
-oo.setAnnoToken('kasthuri11_final_membranes');
+oo.setAnnoToken('cv_kasthuri11_membrane_2014');
+oo.setAnnoChannel('image');
 
 q.setType(eOCPQueryType.probDense);
 
@@ -55,8 +56,9 @@ catch
     mData = download_big_cuboid(oo,q);
 end
 %% Vesicles
-oo.setServerLocation('http://dsp061.pha.jhu.edu/');
-oo.setAnnoToken('kasthuri11_inscribed_vesicles');
+oo.setAnnoToken('cv_kasthuri11_vesicle_2014');
+oo.setAnnoChannel('annotation');
+
 q.setType(eOCPQueryType.annoDense);
 
 try

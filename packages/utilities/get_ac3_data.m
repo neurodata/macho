@@ -9,7 +9,7 @@ else
     pad = [padX, padY, padZ];
 end
 
-e%AC3
+%AC3
 xTrainExt = [5472-pad(1), 6496+pad(1)];
 yTrainExt = [8712-pad(2), 9736+pad(2)];
 zTrainExt = [zSlice-pad(3),zSliceEnd+pad(3)]; %1256
