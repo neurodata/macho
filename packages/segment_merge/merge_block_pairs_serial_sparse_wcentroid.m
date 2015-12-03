@@ -21,7 +21,8 @@ oo.setDefaultResolution(resolution);
 %% Prep
 
 % Load text file
-fid = fopen(cutoutFile,'r');  % Open text file
+cutoutFile
+fid = fopen(cutoutFile,'r')  % Open text file
 queries = textscan(fid,'%s','delimiter','\n');
 queries = queries{:};
 fclose(fid);
@@ -41,6 +42,7 @@ for jj = start_index:stop_index
     fprintf('Beginning query index: %d...\n',jj);
     
     % Load query
+    queries{jj}
     load(queries{jj});
     query.setType(eOCPQueryType.annoDense);
     
@@ -151,18 +153,23 @@ for jj = start_index:stop_index
         fprintf('serial_merge_simple', sprintf('Requesting %d Merges\n',length(id_list)));
         for ii = 1:length(id_list)
             ids = id_list{ii};
-            mon.update('tc_ids', sprintf('%d,',ids));
+            %mon.update('tc_ids', sprintf('%d,',ids));
             
             try
                 oo.mergeAnnotation(ids(1),ids(2:end));
-                fprintf('Successfully Merged IDs...\n');
                 
                 % recompute centroid for id1
                 q = OCPQuery;
                 q.setType(eOCPQueryType.RAMONVoxelList);
+                q.setResolution(resolution);
                 obj = oo.query(q);
                 centroid = round(mean(obj.data));
+                centroid = num2str(centroid);
+                whos centroid
+                centroid
                 oo.setField(ids(1),'centroid',centroid)
+                fprintf('Successfully Merged IDs...\n');
+
             catch
                 fprintf('Error in Merging IDs...\n');
                 cc = cc + 1;
