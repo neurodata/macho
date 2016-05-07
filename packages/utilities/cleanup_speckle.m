@@ -20,7 +20,7 @@ function segOut = cleanup_speckle(segIn)
 segOut = zeros(size(segIn));
 
 for i = 1:size(segIn,3)
-    i
+   % i
     L = segIn(:,:,i);
     L2 = L;
 while sum(L2(:) == 0) > 0
